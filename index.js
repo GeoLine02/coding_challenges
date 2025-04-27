@@ -279,4 +279,78 @@ const groupAnagrams = (arr) => {
   return Array.from(groups.values());
 };
 
-console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+// console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])); ✅
+
+// _____________
+// DAY 5
+// _____________
+
+// easy
+
+// Get the value of name from { name: 'John' }
+
+const valueGetter = (obj) => {
+  return obj.name;
+};
+
+// console.log(valueGetter({ name: "John" })); ✅
+
+// medium 1
+
+// Count occurrences of each letter in 'hello' → {h:1, e:1, l:2, o:1}
+
+const occurrenceCounter = (str) => {
+  return str.split("").reduce((acc, char) => {
+    acc[char] = (acc[char] || 0) + 1;
+    return acc;
+  }, {});
+};
+
+// console.log(occurrenceCounter("hello")); ✅
+
+// medium 2
+
+// Convert [['a', 1], ['b', 2]] into {a:1, b:2}
+
+const TwoDarrayToObjConverter = (arr) => {
+  return Object.fromEntries(arr);
+};
+
+// console.log(
+//   TwoDarrayToObjConverter([
+//     ["a", 1],
+//     ["b", 2],
+//   ])
+// ); ✅
+
+// Write a function that deeply clones a nested object.
+
+const deepClone = (obj) => {
+  if (obj === null || typeof obj !== "object") {
+    return obj; // If obj is not an object (or it's null), just return it
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(deepClone); // If it's an array, deep clone each item
+  }
+
+  const clonedObj = {};
+
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      clonedObj[key] = deepClone(obj[key]); // Recursively deep clone
+    }
+  }
+
+  return clonedObj;
+};
+
+console.log(
+  deepClone({
+    name: "John",
+    address: {
+      city: "New York",
+      zip: 12345,
+    },
+  })
+);
