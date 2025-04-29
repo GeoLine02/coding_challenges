@@ -325,32 +325,74 @@ const TwoDarrayToObjConverter = (arr) => {
 
 // Write a function that deeply clones a nested object.
 
-const deepClone = (obj) => {
-  if (obj === null || typeof obj !== "object") {
-    return obj; // If obj is not an object (or it's null), just return it
-  }
+const deepClone = (obj) => {};
 
-  if (Array.isArray(obj)) {
-    return obj.map(deepClone); // If it's an array, deep clone each item
-  }
+// console.log(
+//   deepClone({
+//     name: "John",
+//     address: {
+//       city: "New York",
+//       zip: 12345,
+//     },
+//   })
+// ); ❌
 
-  const clonedObj = {};
+// hard 2
 
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      clonedObj[key] = deepClone(obj[key]); // Recursively deep clone
-    }
-  }
+// Merge two deeply nested objects.
 
-  return clonedObj;
+const deepObjectMerger = (obj1, obj2) => {};
+
+// console.log(
+//   deepObjectMerger(
+//     {
+//       a: 1,
+//       b: {
+//         c: 2,
+//         d: 3,
+//       },
+//       e: 5,
+//     },
+//     {
+//       b: {
+//         c: 20,
+//         f: 6,
+//       },
+//       e: {
+//         g: 7,
+//       },
+//     }
+//   )
+// ); ❌
+
+// ______________
+// Day 6
+// ______________
+
+// easy
+
+// Reverse an array without using the built-in reverse method.
+
+const reverseArray = (arr) => {
+  if (!arr.length) return [];
+
+  const firstElement = arr.shift();
+  return reverseArray(arr).concat(firstElement);
 };
 
-console.log(
-  deepClone({
-    name: "John",
-    address: {
-      city: "New York",
-      zip: 12345,
-    },
-  })
-);
+// console.log(reverseArray([1, 2, 3]));
+
+// medium 1
+
+// Rotate an array by a given number of positions.
+
+const rotateArray2ndPosition = (arr, positions) => {};
+
+// console.log(rotateArray2ndPosition([1, 2, 3, 4, 5], 2)); ❌
+
+// medium 2
+
+// Flatten a nested object into a single-level object.
+
+const flattenNestedObj = (obj) => {};
+console.log(flattenNestedObj({ a: 1, b: { c: 2, d: 3 } }));
